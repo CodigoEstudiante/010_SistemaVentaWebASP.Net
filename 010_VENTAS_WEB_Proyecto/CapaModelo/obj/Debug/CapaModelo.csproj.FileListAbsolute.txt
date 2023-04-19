@@ -1,0 +1,12 @@
+D:\WorkSpaceAD\YOUTUBE\010_FUNCIONALIDAD SISTEMA VENTAS WEB C#\Proyecto\CapaModelo\bin\Debug\CapaModelo.dll
+D:\WorkSpaceAD\YOUTUBE\010_FUNCIONALIDAD SISTEMA VENTAS WEB C#\Proyecto\CapaModelo\bin\Debug\CapaModelo.pdb
+D:\WorkSpaceAD\YOUTUBE\010_FUNCIONALIDAD SISTEMA VENTAS WEB C#\Proyecto\CapaModelo\obj\Debug\CapaModelo.csprojAssemblyReference.cache
+D:\WorkSpaceAD\YOUTUBE\010_FUNCIONALIDAD SISTEMA VENTAS WEB C#\Proyecto\CapaModelo\obj\Debug\CapaModelo.csproj.CoreCompileInputs.cache
+D:\WorkSpaceAD\YOUTUBE\010_FUNCIONALIDAD SISTEMA VENTAS WEB C#\Proyecto\CapaModelo\obj\Debug\CapaModelo.dll
+D:\WorkSpaceAD\YOUTUBE\010_FUNCIONALIDAD SISTEMA VENTAS WEB C#\Proyecto\CapaModelo\obj\Debug\CapaModelo.pdb
+D:\WorkSpaceAD\YOUTUBE\010_FUNCIONALIDAD SISTEMA VENTAS WEB C#\010_VENTAS_WEB_Proyecto\CapaModelo\bin\Debug\CapaModelo.dll
+D:\WorkSpaceAD\YOUTUBE\010_FUNCIONALIDAD SISTEMA VENTAS WEB C#\010_VENTAS_WEB_Proyecto\CapaModelo\bin\Debug\CapaModelo.pdb
+D:\WorkSpaceAD\YOUTUBE\010_FUNCIONALIDAD SISTEMA VENTAS WEB C#\010_VENTAS_WEB_Proyecto\CapaModelo\obj\Debug\CapaModelo.csprojAssemblyReference.cache
+D:\WorkSpaceAD\YOUTUBE\010_FUNCIONALIDAD SISTEMA VENTAS WEB C#\010_VENTAS_WEB_Proyecto\CapaModelo\obj\Debug\CapaModelo.csproj.CoreCompileInputs.cache
+D:\WorkSpaceAD\YOUTUBE\010_FUNCIONALIDAD SISTEMA VENTAS WEB C#\010_VENTAS_WEB_Proyecto\CapaModelo\obj\Debug\CapaModelo.dll
+D:\WorkSpaceAD\YOUTUBE\010_FUNCIONALIDAD SISTEMA VENTAS WEB C#\010_VENTAS_WEB_Proyecto\CapaModelo\obj\Debug\CapaModelo.pdb

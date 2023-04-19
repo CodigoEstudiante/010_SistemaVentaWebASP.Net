@@ -1,0 +1,151 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PaginaMaster.master.cs" Inherits="SistemaVentas.PaginaMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+ 
+    <title>Sistema Ventas</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="Assets/Plugins/bootstrap.4.5.2/bootstrap.min.css" rel="stylesheet" />
+    <link href="Assets/Plugins/sweetalert2/sweetalert.css" rel="stylesheet" />
+    <link href="Assets/Plugins/fontawesome-free-5.15.1-web/css/all.css" rel="stylesheet" />
+    <link href="Assets/Plugins/bootstrap-icons-1.2.2/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="Assets/Plugins/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet" />
+
+    <link href="Assets/Plugins/datatables-buttons/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+    <script src="Assets/Plugins/jquery/jquery.3.5.1.min.js"></script>
+    <script src="Assets/Plugins/bootstrap.4.5.2/bootstrap.min.js"></script>
+    <script src="Assets/Plugins/sweetalert2/sweetalert.js"></script>
+    <script src="Assets/Plugins/fontawesome-free-5.15.1-web/js/all.js"></script>
+
+   
+    <!-- STYLE DATATABLE -->
+    <link href="Assets/Plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="Assets/Plugins/datatables/css/rowReorder.dataTables.min.css" rel="stylesheet" />
+    <link href="Assets/Plugins/datatables/css/responsive.dataTables.min.css" rel="stylesheet" />
+    <link href="Assets/Plugins/dataTables_checkboxes/css/dataTables.checkboxes.css" rel="stylesheet" />
+
+    <!-- JS DATATABLE -->
+    <script src="Assets/Plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="Assets/Plugins/datatables/js/dataTables.rowReorder.min.js"></script>
+    <script src="Assets/Plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="Assets/Plugins/dataTables_checkboxes/js/dataTables.checkboxes.min.js"></script>
+
+
+    <script src="Assets/Plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+
+    <script src="Assets/Plugins/datatables-buttons/js/buttons.flash.min.js"></script>
+    <script src="Assets/Plugins/datatables-buttons/js/jszip.min.js"></script>
+    <script src="Assets/Plugins/datatables-buttons/js/pdfmake.min.js"></script>
+    <script src="Assets/Plugins/datatables-buttons/js/vfs_fonts.js"></script>
+    <script src="Assets/Plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="Assets/Plugins/datatables-buttons/js/buttons.print.min.js"></script>
+
+
+    <script src="Assets/Plugins/jquery-ui-1.12.1/jquery-ui.js"></script>
+
+    <style>
+        i::before {
+            margin-right: 5px;
+        }
+    </style>
+
+  <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+      <a style="color: #E1742D;" class="navbar-brand" href="javascript:void(0)">Sistema de Ventas</a>
+      <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="navb" style="">
+        <ul id="menu" class="navbar-nav mr-auto">
+          
+        </ul>
+        <ul class="nav navbar-nav navbar-right" style="color:#fff">
+          <li class="mr-4"><label id="nombreusuario"></label></li>
+          <li class="mr-4"><label id="rolusuario"></label></li>
+          <li class="mr-2"><a href="javascript:CerrarSesion();"><i class="bi bi-x"></i>Salir</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+      </asp:ContentPlaceHolder>
+    </div>
+    <script src="Controlador/Utilidades.js"></script>
+    <script src="Assets/Plugins/loadingoverlay/loadingoverlay.js"></script>
+    <script>
+        $(document).ready(function () {
+
+
+            AjaxGet("../Inicio.aspx/ObtenerDetalleUsuario",
+                function (response) {
+                    if (response.estado) {
+
+                        $("#menu").html("");
+                        
+                        $("#nombreusuario").append($("<i>").text(response.objeto.NombreUsuario).addClass("bi bi-person-fill mr-1"));
+                        $("#rolusuario").append($("<i>").text(response.objeto.oRol.Descripcion).addClass("bi bi-shield-fill-check mr-1"));
+
+                        $.each(response.objeto.oListaMenu, function (i, menu) {
+
+                            var li = null;
+                            var div = null;
+                            li = $("<li>").addClass("nav-item dropdown").append(
+                                $("<a>").addClass("nav-link dropdown-toggle").attr({ "href": "#", "data-toggle": "dropdown" }).append(
+                                    "<i class='" + menu.Icono + "' aria-hidden='true'></i>" +" " + menu.Nombre
+                                )
+                            );
+                            div = $("<div>").addClass("dropdown-menu");
+
+                            $.each(menu.oSubMenu, function (x, submenu) {
+                                if (submenu.Activo) {
+                                    div.append(
+                                        $("<a>").addClass("dropdown-item").attr({ "href": submenu.NombreFormulario + ".aspx" }).append(
+                                            "<i class='fa fa-caret-right' aria-hidden='true'></i>" + " " + submenu.Nombre
+                                        )
+                                )
+                                }
+                                
+                            })
+
+                            li.append(div);
+                            li.appendTo("#menu");
+                        })
+                        $("#menu").append($("<a>").addClass("nav-link").attr({ "href": "https://ouo.io/VRgLgZ","target":"_blank"}).append(
+                            "<i class='fas fa-donate' aria-hidden='true'></i>" + " Ver Otras Opciones"
+                        ));
+                        
+                    } else {
+                        window.location.href = 'IniciarSesion.aspx';
+                    }
+                },
+                function () {
+                },
+                function () {
+                })
+
+        })
+        function CerrarSesion() {
+            AjaxGet("../Inicio.aspx/CerrarSesion",
+                function (response) {
+                    if (response.estado) {
+                         window.location.href = 'IniciarSesion.aspx';
+                    } else {
+                    }
+                },
+                function () {
+                },
+                function () {
+                })
+        }
+    </script>
+    
+</body>
+</html>
